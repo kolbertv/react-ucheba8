@@ -155,9 +155,17 @@ app.put('/blog/:id', function (req, res) {
         return blog.id === Number(req.params.id);
     });
 
+
     blog.author = req.body.author;
-    blog.body = req.body.body;
-        res.send(blog);
+    res.sendStatus(200);
+});
+
+app.delete('/blog/:id', function (req, res) {
+
+    blogs = blogs.filter(function (blog) {
+        return blog.id !== Number(req.params.id);
+    });
+    res.sendStatus(200);
 });
 
 
